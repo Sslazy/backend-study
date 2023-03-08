@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    将制定的类配置给Spring，让Spring容器创建其例-->
+    <bean id="userDao" class="org.example.spring.ioc.UserDaoImpl"/>
+
+    <bean id="userService" class="org.example.spring.ioc.UserServiceImpl">
+        <!--将ID为 userDao 的 bean 实例注入到 userService 实例        -->
+        <property name="userDao" ref="userDao"></property>
+        <constructor-arg name="msg" value="构造方法注入"/>
+    </bean>
+
+
+
+
+    <bean id="Cat" class="org.example.spring.ioc.entity.Cat">
+        <property name="name" value="白"/>
+        <property name="age" value="2"/>
+    </bean>
+
+    <bean id="Dog" class="org.example.spring.ioc.entity.Dog">
+        <property name="name" value="黑"/>
+        <property name="age" value="3"/>
+    </bean>
+
+    <bean id="bookExample1" class="org.example.spring.ioc.entity.Book">
+        <property name="name" value="假如给我三天光明"/>
+        <property name="num" value="24"/>
+        <property name="price" value="56"/>
+    </bean>
+
+    <bean id="bookExample" class="org.example.spring.ioc.entity.Book">
+
+    </bean>
+
+    <bean id="clothes" class="org.example.spring.ioc.entity.Clothes">
+
+        <property name="style" value="是炫酷的"/>
+        <property name="clothes" value="夹克"/>
+    </bean>
+
+    <bean id="person" class="org.example.spring.ioc.entity.Person">
+        <property name="color" value="黑色"/>
+        <property name="name" value="男孩的"/>
+
+    </bean>
+
+    <bean id="clothes1" class="org.example.spring.ioc.entity.Clothes">
+        <property name="clothes" value="裙子"/>
+        <property name="style" value="是漂亮的"/>
+    </bean>
+
+    <bean id="person1" class="org.example.spring.ioc.entity.Person">
+        <property name="name" value="女孩的"/>
+        <property name="color" value="粉色"/>
+    </bean>
+
+    <bean id="p1" class="org.example.spring.ioc.entity.Pen">
+        <property name="name" value="水彩笔"/>
+    </bean>
+
+    <bean id="p2" class="org.example.spring.ioc.entity.Pen">
+        <property name="name" value="圆珠笔"/>
+    </bean>
+
+    <bean id="p3" class="org.example.spring.ioc.entity.Pen">
+        <property name="name" value="中性笔"/>
+    </bean>
+
+    <bean id="schoolBag" class="org.example.spring.ioc.entity.SchoolBag">
+        <property name="color" value="黑色"/>
+        <property name="pencilCase">
+            <list>
+                <ref bean="p1"/>
+                <ref bean="p2"/>
+                <ref bean="p3"/>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>
